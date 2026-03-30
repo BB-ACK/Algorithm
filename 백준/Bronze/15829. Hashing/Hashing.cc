@@ -4,8 +4,8 @@ using namespace std;
 
 int hashFn(string word) {
     int r = 31;
-    int r_pow = 1;
-    int sum = 0;
+    long long r_pow = 1;
+    long long sum = 0;
 
     for(int i = 0; i < word.length(); i++) {
         int tmp = word[i] - 'a' + 1;
