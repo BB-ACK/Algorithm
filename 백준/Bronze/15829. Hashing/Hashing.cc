@@ -1,18 +1,21 @@
 #include <iostream>
 #include <string>
-#include <cmath>
 using namespace std;
 
 int hashFn(string word) {
     int r = 31;
-    long long result = 0;
+    int r_pow = 1;
+    int sum = 0;
 
     for(int i = 0; i < word.length(); i++) {
         int tmp = word[i] - 'a' + 1;
-        result += tmp * pow(r, i);
+        sum = (sum + (tmp * r_pow)) % 1234567891; // 매순간 나머지를 곱해줌
+
+        // 다음 항을 위한 r제곱
+        r_pow = (r_pow * r) % 1234567891;
     }
 
-    return result % 1234567891;
+    return sum;
 }
 
 
